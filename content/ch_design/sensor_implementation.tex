@@ -1,0 +1,12 @@
+
+
+
+\begin{comment}
+\section{Test of Laser ToF sensors}
+In order to test the chosen sensors, a test system has to be built.
+We decided to use an Arduino Uno, with a custom made breakout board, to interface the two VL53l0X sensors to the arduino.
+
+The two VL53L0X sensors communicate over i2C (Inter-Integrated Circuit) which is a 2-wire bus, with one master and up to 127 slaves, as each slave has a 7bit address. The VL53L0X starts up on a fixed address, but can have a custom address configured. By making use of the shutdown pin on the sensor, one can sequentially turn on the sensors, give them a new address and then continue to the next sensor.
+
+We have decided to use the Pololu Arduino library\cite{vl53l0x_lib} for the VL53L0X sensors, as it implements the required modes, as well as setting new addresses.
+\end{comment}

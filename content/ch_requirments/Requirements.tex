@@ -1,0 +1,119 @@
+\chapter{Requirements}\label{ch:Req}
+The requirements that have been chosen for this project is listed in the following tabular \ref{tab:req}.  
+
+\begin{table}[H]
+\begin{tabular}{|c|l|c|c|}
+\hline
+\textbf{Number} & \textbf{Performance requirements}  & \textbf{Desired value}& \textbf{Accuracy} \\ \hline
+1 & Desired distance to the floor             & 400 mm       & $\pm$5 \% \\ \hline
+2 & Desired distance to the wall              & 400 mm       & $\pm$5 \% \\ \hline
+3 & Detection of an object                    & $\geq$1000 mm      & -  \\ \hline
+4 & Activation of the sensor at desired angle & $0\degree$          & $\pm10 \degree$  \\ \hline
+5 & Drone speed                               & $\leq$ 1 m/s &   \\ \hline
+ & \textbf{Functional requirements}  & \textbf{Desired value} & \\ \hline
+6 & Overshoot              & $\leq$40 \% & \\ \hline
+7 & Settling time           & $\leq$10 s & \\ \hline
+8 & Steady state            & $\pm$5 \% & \\ \hline
+9 & Sampling time          & $\geq$40 Hz   & \\ \hline
+\end{tabular}
+\captionof{table}{Table of requirements}\label{tab:req}
+\end{table}
+
+\section{Performance requirements} \label{sec:req}
+In this section the requirements for performance that have been chosen in the tabular \ref{tab:req} will be explained. %First the performance requirements and then the functional requirements. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.70\textwidth]{figures/ch_req/figure_requirements.png}
+    \caption{Figure of the requirements for the distance from the drone}
+    \label{fig:req_fig}
+\end{figure}
+
+\subsection*{Desired distance to the floor}
+The distance to floor as seen in the table \ref{tab:req} is a fixed distance, as it is within the stable range of our sensors.
+
+
+%The desired distance as seen in the table \ref{tab:req} is set,because it is necessary to avoid collision with any obstacles the drone meets on its route. These obstacles could be anything that are placed on the floor, an example of objects could be bags, chairs etc. But there are probably still some obstacles that the 400 mm might not be enough to avoid collision. However, this is just a proof of a concept, such that it would be possible to fly along side a even surface. 
+
+%As shown in table \ref{tab:req} number 1, the desired fixed distance to the floor is 400 mm. The reason for a fixed distance is to avoid any collision with obstacles like lamps that are mounted in the celling.%The drone will avoid collision with objects like lamps in the ceiling by flying at a height at 400 mm.
+%However, this is made as a proof of a concept, to make the drone fly along side a even surface. 
+\subsection*{Desired distance to the wall}
+Like the distance to floor, the desired distance is set to 400 mm as a fixed distance. The distance is from the tip of the propellers to the wall as shown on figure \ref{fig:req_fig} above. This is chosen such that the distance to the wall is far enough to avoid collision with the wall, and if the overshoot get to the maximum and even goes beyond that. 
+
+\subsection*{Detection of an object}
+The desired distance for detection an object is set to 1000 mm. Since the drone must be able to detect an object before the distance to the object reach the 400 mm, which is the desired distance to an object or wall. The detection of an object has been chosen to be at 1000 mm, to make it possible for the drone to stop before collision, at a reasonable speed. From the datasheet it can be seen that the maximum distance for the chosen sensor to detect an object is 2000 mm, this mean by choosing 1000 mm it will be within the sensors range.
+
+\subsection*{Activation of the sensor at desired angle}
+The measuring angle from the sensor to the wall is chosen to be $0\degree$ with $\pm 10 \degree$. It is needed to make some variation from the $0\degree$ to make the sensor detect an object even when it is not perpendicular to the object. Therefor it is chosen to be at $\pm 10 \degree$ accuracy.
+
+\subsection*{Drone speed}
+The speed for the drone is limited to 1 m/s, this is chosen, because this will make the drone fly slowly enough to make a proof of concept for this project. This will also make it possible to follow the drones movement.
+
+%The speed of the drone is limited to 1 m/s, so the drone flies slowly enough to make a proof of concept for the project. And it is still possible to follow the drones movements.
+
+\section{Functional requirements}
+Like the performance requirements were explained in \ref{sec:req}, will the focus in this section be on explaining the functional requirements.
+
+\subsection*{Overshoot}
+The overshoot of $\leq$ 40 \% is chosen to make sure the drone does not collide with an object, even if the desired distance to the wall fails. By using the 40 \% means that the distance accepted for the drone to move inside the desired distance will be at 160 mm. 
+Since the overshoot and dampings ratio are dependent on each other, the overshoot can be used to find the damping ratio seen in equation \ref{eq:overshoot}. Where PO is the Percent Overshoot, these means the damping ratio will be 0.28.
+\begin{equation}\label{eq:overshoot}
+   \zeta = \sqrt{\frac{(ln(\frac{\text{PO}}{100}))^{2}}{\pi^{2}+(ln(\frac{\text{PO}}{100}))^{2}}}
+\end{equation}
+\subsection*{Settling time}
+The settling time is set to $\leq$10s, this time has been chosen to make sure the drone has time to settle in to it desired distance to the wall. It makes it possible to adjust the drones position. 
+\subsection*{Steady state}
+The steady state is set to  $\pm$5 \%, as it also is the accuracy to the desired distance to the wall. This also means that the steady state also need to be at this value. 
+
+\subsection*{Sampling time}
+The sampling time is set to 40 Hz, only to make sure that there are enough sampling to adjust the drone position to perfection. 
+
+\section{Testing of the requirements}\label{s:test_requirements}
+To make sure the drone lives up to all the requirements, some test specification is need for each of the requirements.
+For the three first requirements the sensors needs to meet the requirement, to make sure of this each of the sensors are tested at the maximum distance they needs to detect an object. Additionally they are also tested at 400 mm, to make sure they hold the $\pm5 \%$ to the specific distance. 
+\newline
+To make sure the sensors fulfill the fourth requirement, is to test if the sensor still can detect an object even if the sensor is not facing the wall directly, so to test this the sensors are each turn $\pm10\degree$ from the test object.
+\newline
+To test the drone's speed is only to measure the distance the drone flies, and time it as well. By this two values it will be possible to calculate the speed. 
+\newline
+To make sure that the next three requirements are fulfilled, each of them are first simulated and then also test them. To test these requirements the drones movements will be recorded and after that calculated to make sure the requirements are meet. 
+\newline
+To make sure the sampling time is meet, a number of sampling is counted and the time used is timed. By using 
+these two numbers the sampling time can be calculated. 
+% overshoot(%) < (distance to ground(%)) from ((max measure distance) - (distance to ground))
+
+% Settling time: vi skal vælge en tid (for stor stettling time kan få systemet til at virke langsomt.
+
+% Steady state error: vælges ud fra afstandes sikkerhed
+
+% krav til hvor meget fejl som vinkel for dronen må have
+
+% SAMME KRAV TIL VÆG
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%% Krav til sensor %%%%%%%%%%%%%%
+
+% krav til hvor præcis den er.
+
+% krav til hvor hurtige den er til læse målte værdier.
+
+% Krav til min afstand og max afstand.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%% Funktional krav %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Krav hvornår sensoren skal aktiveres
+
+% Krav Krav til hvilke vinkel den må aflæse værdi fra væg og gulv.
+
+% 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% det er ikke et krav hvis dataene er taget fra et datasheet. (det er limitations)
+
+% hvordan skal kravene tests (accepttest)
+
+% Krav til sampling tid for sensor
+
+% krav til sensors nøjaktrighed.

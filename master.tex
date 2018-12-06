@@ -1,0 +1,94 @@
+%  A simple AAU report template.
+%  2015-05-08 v. 1.2.0
+%  Copyright 2010-2015 by Jesper Kjær Nielsen <jkn@es.aau.dk>
+%
+%  This is free software: you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation, either version 3 of the License, or
+%  (at your option) any later version.
+%
+%  This is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
+%
+\input{setup/custom_commands.tex}% create new commands in here
+\input{setup/preamble.tex}% package inclusion and set up of the document
+\input{setup/hyphenations.tex}% 
+\input{setup/macros.tex}% my new macros
+
+\begin{document}
+%frontmatter
+\input{setup/frontmatter.tex}
+
+%mainmatter
+\pagenumbering{arabic} %use arabic page numbering in the mainmatter
+
+%
+%
+%%%%%%%%% Introduction %%%%%%%%%%%%%%%%
+\chapter{Introduction}\label{ch:introduction}
+   % \input{content/ch_intro/ch_intro.tex}
+    \input{content/ch_intro/droneintro.tex}
+    \input{content/ch_intro/drone_app.tex}
+    \input{content/ch_intro/vores_drone.tex}
+
+    %\input{content/ch_intro/dronePhysic.tex}
+    \input{content/ch_intro/initialProblemStatment.tex}
+    
+%
+%
+%%%%%%%%% Problem analysis %%%%%%%%%%%%%%%%
+\chapter{Problem Analysis}\label{ch:PA}
+    \input{content/ch_analysis/PA_intro.tex}
+    %\input{content/ch_analysis/QP_components.tex}
+    \input{content/ch_intro/dronePhysic.tex}
+    \input{content/ch_analysis/controller.tex}
+    \input{content/ch_intro/ProblemStatement.tex}
+    \input{content/ch_analysis/NavigationVCO.tex}
+    
+
+%
+%
+%%%%%%%%% Requirements %%%%%%%%%%%%%%%
+
+    \input{content/ch_requirments/Requirements.tex}
+
+%
+%
+%%%%%%%%% Design %%%%%%%%%%%%%
+\chapter{Design}\label{ch:design}
+    %\input{content/ch_design/introDesign.tex}
+    \input{content/ch_design/ControlDiagram.tex}
+\chapter{Sensor implementation}\label{ch:sensor}
+    \input{content/ch_design/sensors.tex}
+    \input{content/ch_design/sensor_implementation.tex}
+\chapter{Correction of controller guidance}\label{ch:controller_implementation}
+    \input{content/ch_design/rx-protocol.tex}
+\chapter{Model of the drone}\label{ch:model_drone}
+    \input{content/ch_movement/intro.tex}
+\chapter{Design of controller}
+    \input{content/ch_design/Controller.tex}
+%
+%
+%%%%%%%%% Unsorted things %%%%%%%%%
+
+% \chapter{Template examples}
+%     \section
+%         \input{content/ch_intro/s_ss_and_sss_example.tex}
+%     \section{Place Holders}\label{ch:place_holders}
+%         \input{content/ch_placeholders/ch_placeholders.tex}
+%     \section{Conclusion}\label{ch:conclusion}
+%         \input{content/ch_conclusion/ch_conclusion.tex}
+
+%
+% Bib stuff
+\printbibliography[heading=bibintoc]
+\label{bib:mybiblio}
+\appendix
+%\input{sections/appAname.tex}
+\input{content/appendix/sensorTest.tex}
+\input{content/appendix/droneModelTest.tex}
+\end{document}

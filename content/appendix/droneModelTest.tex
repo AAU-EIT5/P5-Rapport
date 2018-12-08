@@ -1,5 +1,5 @@
 \chapter{Drone flight measuring test}\label{ap:drone_flight_test}
-The purpose of this test is to get a model of how the drone are moving in upward movements, and to make a function of the behaviour. The test will be performed in the Motion detection Lab, located in room  at AAU, where the Vicon system  is placed. The reason for using this system is because it can track an object's position in all x, y and z-axis at the same time. From this data it will be possible to make a model of the drone's movements and from that make the transfer function.
+The purpose of this test is to get a model of how the drone are moving in upward movements, and to make a function of the behaviour. The test will be performed in the Motion detection Lab, located in room  at AAU, where the Vicon system \ref{s:vicon} is placed. The reason for using this system is because it can track an object's position in all x, y and z-axis at the same time. From this data it will be possible to make a model of the drone's movements and from that make the transfer function.
 
 \section*{Test setup}
 The components there are used in the test are as the following point:
@@ -32,14 +32,20 @@ The data is plotted in the figure \ref{}, in this figure the plot is directly fr
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{figures/Appendix/measuringTest/DroneTest.png}
-    \caption{Plot of the data }
+    \includegraphics[width=0.95\textwidth]{figures/Appendix/measuringTest/DroneTest.png}
+    \caption{Plot of the recorded data}
     \label{fig:positiontime}
 \end{figure}
 
 \section*{Discussion}
-From these two data plots,
-
-
+From this test it can be seen in the data that the requirement of the speed is fulfilled, in the point that it takes more then one second to move one meter in distance. But apart from that there are some problems in how the drone moves before the systems go in and take over, the drone cannot start from the ground. So the drone needs to fly in a steady level, this gives some problems in getting the right data from all the recorded data. From this point the data will be needed to be sorted. To make sure that the plotted data is for the step response and not for the drop after worth and not to long before the drop. 
+\newline
+Apart from this problem, the data represent movement of the drone, because the movement of the drone is tracked in the Vicon system, so the drone can be followed to make the correct time. The data is therefor the best representation of the movement, so these data will be used for the model of the drone.
 
 \section*{Conclusion}
+The data from this it will be possible to make a real model of the drone's movements. Where the data from this test, is only a position in time, therefor the data needs to be changed to a model of the speed over time instead. Apart from this the data plotted in figure \ref{fig:positiontime} shows that the drone fulfill the requirement for the speed and also make a useful foundation for making a model of the drone's movements in a step response.
+
+
+
+
+

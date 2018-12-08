@@ -10,7 +10,7 @@ In order to make a transfer function for the drone it is needed to examine how t
 
  As mentioned in the requirement specification \ref{sec:req}, the drone should keep a fixed distance to the floor. To be able to control the drone in the z-axis, a model for the drone will be determined. This model describing how the drone corresponds to controller inputs. The position on the z-axis is controlled by the throttle on the remote controller. The throttle values is set from 1000\% - 2000\%, where the drone is idle at 1000\% and maximum velocity at 2000\%.  
 
-\section{Vicon}
+\section{Vicon}\label{s:vicon}
 To determine the behaviour of the drone, it is important to know how the the drone response to the remote controller. 
 Because the models are of a drone, driven by a flight controller with an unknown control system, it seems inaccessible to derive the models analytically. Instead, by measuring either an impulse response or a step
 response in the z axis, the models can be determined experimentally. For this a motion tracker system, for tracking the positions of the drone. A motion tracker system called vicon is available at the university laboratory. 

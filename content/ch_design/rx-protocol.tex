@@ -40,7 +40,7 @@ AFHDS2A, which stands for Automatic frequency hopping digital system 2A is used 
 
 
 
-\subsection{RX protocols}\label{ss:rxprotococls} 
+\subsection*{RX protocols}\label{ss:rxprotococls} 
 The RX connects to the flight-controller, using one or more channels where each channel carries a control signal for a function on the drone. These channels can either be transmitted over one wire each, using PWM to express the value of the channel, or they can all be transmitted over one wire, using PPM or other serial protocols to express the value of each channel.\\
 
 \begin{figure}[h]
@@ -75,7 +75,7 @@ As shown on figure \ref{fig:iBUS} an iBUS packet consists of a header-byte then 
 
 Due to the benefits that iBUS caries over PWM and PPM, this is the protocol we have decided to further use in our project.
 
-\subsection{iBUS decoding and encoding}
+\subsection*{iBUS decoding and encoding}\label{iBUS library}
 
 The code developed to decode and encode iBUS is available on our github\cite{ibus-lib}.
 It was written as a generic Arduino library, and this section will document key functions from it.

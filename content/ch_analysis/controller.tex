@@ -1,38 +1,34 @@
 \section{Control Units}\label{s:cont}
-Before it is possible to fly the drone up in a certain altitude and move it around in the four directions, a method to control the drone is required. The drone can either be controlled with a controller or a software. %hard coded to follow a path. 
+Before it is possible to fly the drone up in a certain altitude and move it around in the four directions, a method of controlling the drone is necessary. The drone can either be controlled with a remote control unit or by on-drone software. %hard coded to follow a path. 
 \newline
 There are different options when it comes to controlling the drone with a control unit. It is firstly important to understand how communication between a drone and a control unit works. %drone controlling works.
 
-The communications work in that way that the control unit have a built-in TX, which means that it can transmits all its data to the drone. The data could be anything that the user presses on the control unit. When the data are sent, the drone which have a built-in RX receives all the data from the control unit. However, it is important that the control unit and the drone are connected to each other. \cite{Control}
+The communications works by the control unit having a built-in transmitter. By using a control unit the transmitter can transfer control data to the drone. The data could be anything that the user presses on the control unit. When the data are sent, the built-in receiver on the drone, will receive all the data from the control unit. To use this method it is important the control unit and the drone are connected to each other \cite{Control}.
 %The way the user communicates with the drone is by sending data to the drone with a transmitter like a remote control. The data will be received by the receiver equipped on the drone, and the drone will respond to it. \cite{control}
-\\ \\
-%The ways that are mostly used to remote control a drone today are the following:
-The following are the most used to remote control a drone today. 
 
- \begin{itemize}
-        \item RC control unit
-        \item Bluetooth devices
-        \item Wi-Fi devices
-\end{itemize}
-\subsubsection*{RC control unit}
+
+
+The control units there are most used for drones are handheld remote controllers, using either Bluetooth, Wi-Fi or a proprietary RF protocol.
+
+\subsubsection*{Proprietary RF}
 %As the name also says 
-The communication between the transmitter and receiver in a RC control unit is by the use of radio frequencies. Radio communications are at 2.4 GHz remote control giving a range about 5 km, but it will mostly depend on the transmitter TX and receiver RX antennas. \cite{droneRange}
+The communication between the transmitter and receiver is carried out over a proprietary RF protocol, commonly in the license free 2.4GHz frequency band. Transceivers of this type often incorporate frequency hopping and error correction, and high powered transmitters, to ensure a stable, long range connection can be maintained. 
 
 \subsubsection*{Bluetooth/Wi-Fi controllers}
-The drone can be controlled via an application by Bluetooth or Wi-Fi compatible devices like smartphones or tablet. Drone manufactures like DJI have developed applications that gives advanced positioning, first person video controls, programmable flight routes, and more. The downsides of using Bluetooth as a communication method are the lack of a standard protocol for control drones and the short range of Bluetooth communication even though it supports 2.4 GHz remote control.\cite{droneRange} \\
+The drone can also be controlled via an application using Bluetooth or Wi-Fi compatible devices like smartphones and tablets. Manufactures of drones like DJI have developed an application that gives advanced positioning, first person video controls, programmable flight routes, and much more. The downsides of using Bluetooth or Wi-Fi as a communication method, are the lack of a standard protocol for control drones and the short range \cite{droneRange}. 
 
 Wi-Fi provides the ability to transmit larger amounts of data to and from the drone within a specific radius. The problem with using Wi-Fi is the short range of communication, in many cases lose connection. 
 
 \subsection*{Autonomous drone control}
-A way for the drone to fly automatically is by using local GPS. GPS stands for Global Position system, it gives the ability such as auto pilot features, since it provides the accurate position data.
-Since the GPS is limited for outdoor applications, there are not many companies that have tried to develop such a system for indoor purposes. An example of such a system is GT-position starter kit from Gamesontrack. 
-\newline \\
-GT-position indoor GPS-system uses Gameontracks own satellites.
-Based on a combination of radio and ultrasound they provide sharp distances to any moving or stationary unit which has a sender in the system.
-The satellites provide precision up to 10 mm and can measure up to 8 m distance. Satellites are combined in scenarios of 2, 3 or more which together form a 2D or 3D position in a coordinate system. More scenarios can be combined to extend coverage.\cite{gt-position}
+A way for the drone to fly automatically is by using Global Position system (GPS), it gives the ability such as auto pilot features, since it provides the drone with accurate position data.
+Since the GPS is limited for outdoor applications, it is not useable indoors, and there are not many companies that have attempted to develop alternative systems for indoor purposes. An example of an indoor positioning system is GT-position from Gamesontrack \cite{gt-position}. 
+
+GT-position indoor positioning-system uses Gameontracks own indoor satellites.
+Based on a combination of radio and ultrasound they provide precise distances to any moving or stationary unit which has a sender in the system.
+The satellites provide precision up to 10 mm and can measure up to 8 m distance. Satellites are combined in scenarios of 2, 3 or more which together form a 2D or 3D position in a coordinate system. More scenarios can be combined to extend coverage \cite{gt-position}.
 
 \subsection*{Conclusion} 
-For the purpose of this project RC controller will be used. The drone chosen for this project is equipped with an RC transmitter, which can communicate with the RC receiver on the controller.\cite{Control} Also mentioned earlier, by controlling the drone with RC, it provides control of the drone for a much greater distance than a Wi-Fi or Bluetooth connection.
+For the purpose of this project RF controller will be used, because it exposes a standardized interface which can be broken into. The drone chosen for this project is equipped with an RF receiver, which can communicate with the RC transmitter in the controller \cite{Control}. Also mentioned earlier, by controlling the drone with RF, it provides control of the drone for a much greater distance than a Wi-Fi or Bluetooth connection.
 
 
 

@@ -14,7 +14,7 @@
 %
 %  You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
 %
-\documentclass[11pt,oneside,a4paper,openright]{report}
+\documentclass[11pt,twoside,a4paper,openany]{report}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Language, Encoding and Fonts
 % http://en.wikibooks.org/wiki/LaTeX/Internationalization
@@ -63,7 +63,9 @@
 % Enable the use of frames around, e.g., theorems
 % The framed package is used in the example environment
 \usepackage{framed}
+%\setlength\parindent{0pt}
 \setlength{\parskip}{1em}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Mathematics
 % http://en.wikibooks.org/wiki/LaTeX/Mathematics
@@ -113,7 +115,7 @@
 \renewcommand{\headrulewidth}{0pt} %remove the horizontal line in the header
 \fancyhead[RE]{\small\nouppercase\leftmark} %even page - chapter title
 \fancyhead[LO]{\small\nouppercase\rightmark} %uneven page - section title
-\fancyhead[LE,RO]{\thepage} %page number on all pages
+\fancyfoot[RE,LO]{\thepage} %page number on all pages
 % Do not stretch the content of a page. Instead,
 % insert white space at the bottom of the page
 \raggedbottom
@@ -126,7 +128,8 @@
 % http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[backend=bibtex,
-  bibencoding=utf8
+  bibencoding=utf8,
+  sorting=none
   ]{biblatex}
 \addbibresource{bib/mybib}
 
@@ -141,7 +144,7 @@
 \usepackage{lastpage}
 % Add todo notes in the margin of the document
 \usepackage[
-%  disable, %turn off todonotes
+  disable, %turn off todonotes
   colorinlistoftodos, %enable a coloured square in the list of todos
   textwidth=\marginparwidth, %set the width of the todonotes
   textsize=scriptsize, %size of the text in the todonotes

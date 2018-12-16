@@ -1,34 +1,21 @@
-In this chapter the sensors for the drone will be chosen, so they will fulfill the requirements given for the sensors. To make this choice some different Time-of-Flight sensors will be examined.
+In this chapter the sensors for the drone will be chosen, so they will fulfill the requirements given for the sensors which can be seen on table \ref{tab:req}.
 \section{Time of Flight sensors}\label{s:sensor_choice}
-A ToF sensor works by sending out a signal, and timing the delay before the reflection of this signal is received. In the section \ref{s:navi} (Navigation) the different types of ToF sensors have been examined, and in that section it have been chosen that the sensor that suit this project most will be ether a IR sensor or a ultrasonic sensor. From these sensor types the following sensors have been chosen to be looked through:
-\begin{itemize}
-    \item IR
-    \begin{itemize}
-        \item VL53L0X %%%%
-        \item VL53L1X 
-    \end{itemize}
-    \item Ultrasonic
-    \begin{itemize}
-        \item CH-101
-        \item CH-201
-        \item HC-SR04
-    \end{itemize}
-\end{itemize}
-From this list of of sensors, it have been chosen that the sensor suited best for this project is the VL53L0X, which fulfill the requirements for what the sensors.
+A Time of Flight (ToF) sensor works by sending out a signal, and timing the delay before the reflection of this signal is received. In the section \ref{s:navi} (Navigation) the different types of ToF sensors have been examined, and in that section it have been chosen that the sensor that suit this project most will be ether a IR sensor or a ultrasonic sensor. From these types, the sensor VL53L0X have been chosen, since it fulfill the requirements for this project.
 
 \section{Setup of the sensor}\label{setup_sensor}
-Before setting up the sensor to the drone, some technical information is needed to have knowledge of these sensors.
-First the geometric of the sensor is shown in figure \ref{fig:sensor_geometric}, here is both for the transmitting led and the receiving led. The funnel from each of the leds is the field the sensor can transmit to and receive from. The small led is the transmitter and the big one is the receiver. 
-AS told before, the sensor works by sending out a IR signal and times the time used before it receives the reflected signal again.
+Before setting up the sensor to the drone, some technical information is needed to obtain knowledge of these sensors.
+First a sketch of the of the sensor is shown in figure \ref{fig:sensor_geometric}, here is both for the transmitting laser and the receiving photo-diode. The Field of Vision from the laser and the photo-diode are the field the sensor can transmit to and receive from. The small field of vision is the receiver and the big one is the transmitter. 
+As mention before, the sensor works by sending out a IR signal and times the time used before it receives the reflected signal again.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{figures/ch_design/Sensor.pdf}
-    \caption{Caption}
+    \caption{The sensors construction and visual field.}
     \label{fig:sensor_geometric}
 \end{figure}
 The sensors communicate with a micro controller using i2C, which means it use the pipelines SCL and SDA. The sensors have different modes it works in default mode, high accuracy, long range and high speed. The four modes can be seen in the tabular \ref{tab:sensor_mode}, here both the refresh time and maximum distance for each mode are noted. 
 \begin{table}[H]
-\caption{Sensor modes}\label{tab:sensor_mode}
+\caption{Sensor modes.}\label{tab:sensor_mode}
+\centering
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Mode}          & \textbf{Refresh time} & \textbf{Maximum distance} \\ \hline
@@ -76,11 +63,11 @@ To test the last requirement, which is to detect a surface at a angle of  $\pm 1
 %
 %
 \section{Interfacing with the sensors}\label{sec:interfacingVL53L0X}%find en bedre overskrift
-When using the sensor VL53L0X it's necessary to interfacing with it, to do this the library VL53L0X from Pololu will be used. 
+For interfacing with the VL53L0X the library VL53L0X from Polulu will be used.
 \newline
-To start, the address of the sensor have to be setup, this are done by the \textbf{\textit{setaddress()}} function. After setting the address the sensors is initialized with the function \textbf{\textit{init()}}. To change the time the sensors have to measure the distance, the function \textbf{\textit{setMeasurementTimingBudget(uint32{\_}t budget{\_}us)}}, where the  \textbf{\textit{budget{\_}us}} are the time in microseconds.
+To start, the address of the sensor have to be setup, this are done by the \textbf{\textit{setaddress()}} function. After setting the address, the sensors is initialized with the function \textbf{\textit{init()}}. To change the time the sensors have to measure the distance, the function \textbf{\textit{setMeasurementTimingBudget()}}, where the  \textbf{\textit{budget{\_}us}} are the time in microseconds.
 To start the measuring continuously the function \textbf{\textit{startContinuous()}} is used, and with this the setup of the sensors is done.
-To get a measuring in continuous mode the function \textbf{\textit{readRangeContinuousMillimeters(void)}} is used.
+To get a measuring in continuous mode the function \textbf{\textit{readRangeContinuousMillimeters()}} is used.
 
 %As mentioned earlier in section \ref{setup_sensor} the VL53L0X sensors uses i2C at the communication method 
 % her skal der stå hvordan sensorne settes op så værdier kan læses.

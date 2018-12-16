@@ -17,23 +17,23 @@ The drone are placed in the room with the Vicon cameras. Where the Vicon system 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{figures/Appendix/measuringTest/Reflector1.pdf}
-    \caption{Illustration of placement of the reflectors on the drone}
+    \caption{Illustration of placement of the reflectors on the drone.}
     \label{fig:reflectors}
 \end{figure}
 
 
 \section*{Execution}
-rBefore the test can be executed, a calibration of the Vicon cameras have to be done. After the Calibration the test code are transferred to the Teensy for controlling the drone. When the Vicon system is set to track the drone by it's reflectors, the drone is then set to fly at a steady level. From this steady level, it is set to run a program, which makes the drone keep a throttle level on 30 \% in 10 seconds, and then raise the level to 33\% in 1 second and then back to 30\% afterwards. The code to run this program can be seen in the Github repository. From this step response it is possible to make a model of the drones movements, and calculate the values for the transfer function. 
+Before the test can be executed, a calibration of the Vicon cameras have to be done. After the Calibration the test code are transferred to the Teensy for controlling the drone. When the Vicon system is set to track the drone by it's reflectors, the drone is then set to fly at a steady level. From this steady level, it is set to run a program, which makes the drone keep a throttle level on 30 \% in 10 seconds, and then raise the level to 33\% in 1 second and then back to 30\% afterwards. The code to run this program can be seen in the Github repository. From this step response it is possible to make a model of the drones movements, and calculate the values for the transfer function. 
 
 
 
 \section*{Results}
-The data is plotted in the figure \ref{}, in this figure the plot is directly from the data, which is time and position. In the figure the blue line is the plotted data.
+The data is plotted in the figure \ref{fig:positiontime}, in this figure the plot is directly from the data, which is time and position. In the figure the blue line is the plotted data.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/Appendix/measuringTest/DroneTest.png}
-    \caption{Plot of the recorded data}
+    \caption{Plot of the recorded data.}
     \label{fig:positiontime}
 \end{figure}
 

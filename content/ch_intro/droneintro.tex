@@ -1,10 +1,9 @@
-In this report, the general use of drones indoor will be examined. There have been much development of drones for outdoor use, but the indoor use of drones have not been developed as much, most because safety precautions have to be taken.
-Some of these precautions will be examined and solved through this report. The goal with this report is to make it possible to fly a drone indoor safely. \newline
-However, today drones are mainly used for outdoor flying, both long distance and short distance flying. Each drone type has different purposes depending on how the drone is designed.
-\newline
-To make it possible to fly an off-the-shelf drone indoor, a few precautions is needed. 
+In this report, the general use of drones indoor will be examined. There has been a lot of development on drones for outdoor purposes, but the use of drones indoors have not been developed as much, mostly because safety precautions have to be taken.
+Some of these precautions will be examined and solved through this report. The goal with this report is to design a system that will allow safe indoor flight of drones. \newline
+Since drones today are mainly used for outdoor flying some precautions will be needed to make it safe to fly in side.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-One of the precautions there needs to be taken, when flying a drone indoor, is to secure that it does not bump into objects, like a wall. This can be done by making an area around the drone as a virtual bubble, that will detect objects, as the figure \ref{fig:introSaftyBobble} is illustrating. %As seen on figure \ref{fig:introSaftyBobble} the focus for this project will be to implement this solution for a quadcopter.
+One of the precautions that needs to be taken, when flying a drone indoor, is to ensure that it does not bump into objects, like a wall. This can be done by making sure the drone keeps a fixed distance around itself, like a virtual bubble, that will detect objects, as the figure \ref{fig:introSaftyBobble} is illustrating. %As seen on figure \ref{fig:introSaftyBobble} the focus for this project will be to implement this solution for a quadcopter.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.35\textwidth]{figures/ch_intro/BobleOmDrone.png}
@@ -18,24 +17,24 @@ One of the precautions there needs to be taken, when flying a drone indoor, is t
 
 
 \section{Drones}\label{s:drones}
-To start out this report, two questions should be resolved, what is a drone and what is it used for. 
-A drone is also called a UAV, which is short for unmanned aerial vehicles. A drone can be controlled in different ways, by either software or remote controller. Drones are not exclusively unmanned flying vehicles, but can also be a driving vehicle. Drones is the definition of unmanned vehicles, in this report the word drones will be used for flying drones.   
+To start out this report, two questions should be answered: what is a drone and what is it used for. 
+A drone is also called a UAV, which is an abbreviation of Unmanned Aerial Vehicles. A drone can be controlled in different ways, by either software or remote controller. Drones are not exclusively unmanned flying vehicles, but can also be a driving vehicle. Drones are the definition of unmanned vehicles, in this report the word drones will be used for flying drones.   
 A drone has mainly two ways it is designed, fixed wing and multirotor \cite{drones_type}. The two types can be seen in figure \ref{fig:drones_type}. To learn more about these two types, some of the applications for each of the types will be reviewed in the next section.
 
 \begin{figure}[h]
 \centering
-    \begin{subfigure}[h]{0.45\textwidth}
+    \begin{subfigure}[h]{0.35\textwidth}
         \includegraphics[width=\textwidth]{figures/PA/Fixedwing.pdf}
-        \caption{Example of a fixed wing drone}
+        \caption{Example of a fixed wing drone.}
         \label{fig:fixedwing}
     \end{subfigure}
     ~
-    \begin{subfigure}[h]{0.45\textwidth}
+    \begin{subfigure}[h]{0.35\textwidth}
         \includegraphics[width=\textwidth]{figures/PA/Quadcopter.pdf}
-        \caption{Example of a multirotor drone}
+        \caption{Example of a multirotor drone.}
         \label{fig:multirotor}
     \end{subfigure}
-    \caption{Two types of drones}
+    \caption{Two types of drones.}
     \label{fig:drones_type}
 \end{figure}
 

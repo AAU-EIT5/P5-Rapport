@@ -23,7 +23,7 @@ The control loop has feedback from the sensor. The system can be seen on figure 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{figures/ch_design/transfer_function.pdf}
-    \caption{An illustration of the transfer diagram.}
+    \caption{An basic illustration of the transfer diagram.}
     \label{fig:transfer_function}
 \end{figure}
 
@@ -49,7 +49,7 @@ This data can be used for making the transfer function for the control loop. Fro
 \subsection*{Determination of the first order transfer function}
 A first order system has the function given by equation \ref{eq:firstOrderSystem} \cite{Bolton2002}.
 \begin{equation}\label{eq:firstOrderSystem}
-    G(s)=\frac{K}{\tau s + 1}
+    T(s)=\frac{K}{\tau s + 1}
 \end{equation}
 Where $K$ is the steady-state gain and $\tau$ is the time constant. 
 The stationary gain can be observed from the graph on figure \ref{fig:DroneVelocity}, and are observed to be 770. 
@@ -57,7 +57,7 @@ The time constant is found at 63\% of the steady-state gain, where the value at 
 The time constant is read from the graph to 0.20 second \cite{Bolton2002}.
 With the stationary gain and the time constant are found, the transfer function can be defined as equation \ref{eq:transferFunktionOfDrone}.
 \begin{equation}\label{eq:transferFunktionOfDrone}
-    G(s)=\frac{770}{0.2 s + 1}
+    T(s)=\frac{770}{0.2 s + 1}
 \end{equation}
 A simulation of the determined transfer function compared to the velocity can be seen in figure \ref{fig:Deter_transfor_function} 
 \begin{figure}[h]

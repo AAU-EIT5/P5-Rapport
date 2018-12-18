@@ -11,7 +11,7 @@ First the function for the sensor will be found and afterward the PID controller
 
 
 \section{Feedback control loop}\label{s:feedback_loop}
-To design a control system, a feedback control loop is needed. Normally it will just be a factor like 1, but in this situation, the feedback in the control loop, will be the feedback from the distance sensors. To get an expression for the feedback, a equation is used. Because the feedback is coming from a sensor, that need to sample the data needed to the feedback, the expression in equation \ref{eq:formular_sampling_feedback} is used \cite{digital_control}.
+To design a control system, a feedback control loop is needed. The sensor used in on the drone has a function of 1:1 sensing, but since it is a discrete time sampled sensor, a phase-shift is introduced, described in equation \ref{eq:formular_sampling_feedback}. \ref{eq:formular_sampling_feedback} \cite{digital_control}.
 \begin{equation}\label{eq:formular_sampling_feedback}
     H(s)=\frac{2/T}{s+2/T}
 \end{equation}
@@ -37,8 +37,9 @@ The function for the proportional correction, is shown in equation \ref{eq:kp}.
 \begin{equation}\label{eq:kp}
     \frac{U(s)}{E(s)}=K_p
 \end{equation}
-In equation \ref{eq:kp}, the E(s) function is the error on the input and U(s) is the output after the controller part as seen on figure \ref{fig:controlDiagram}.
-If the $K_p$ gets increased, a larger error can be corrected, but in situations the $K_p$ value gets too big, the error will get larger too. The proportional controller can only correct constant error on the gain. By choosing a very small $K_p$ value the error is big, and by choosing $K_p=1$ there will be corrected no error. If a too big $K_p$ value is chosen will the control loop begin to oscillate and eventually become unstable. If the $K_p$ is too low, the control loop will not respond enough to disturbances or set point changes. The proportional controller is used for set the phase margin and gain margin to the optimal setting \cite{digital_control}. 
+In equation \ref{eq:kp}, the E(s) function is the error between the Reference, and the measured output U(s) as seen on figure \ref{fig:controlDiagram}.
+If the $K_p$ gets increased, it will cause the proportional part of the regulator to have a larger influence on the system being regulated.
+If a too big $K_p$ value is chosen it can cause the system being regulated to oscillate and eventually become unstable, as a larger $K_p$ will reduce the phase margin for the system. If the $K_p$ is too low, the control loop will not respond enough to disturbances or set point changes. The proportional controller is used for set the phase margin and gain margin to the optimal setting \cite{digital_control}. 
 
 
 \begin{comment}
@@ -66,27 +67,27 @@ The graph \ref{gra:P_Control_graph} at step one the proportional gain is set to 
 \end{comment}
 
 \subsection*{Integral controller}
-Apart from the proportional controller, an integral controller always works on the changing error, to make the error goes to zero. The ways this controller works on is by continuously increment and decrements the controller's output to reduce the error from the loop. 
+Apart from the proportional controller, another controller is an integral controller. The integral controller works on the sum of all past errors, to eliminate steady-state errors. This means that the integral controller has infinite DC-gain on the error. The ways this controller works is by continuously summing the past errors and multiplying this sum with the $k_I$ gain.
 
-The error correcting time can depend on the sixe of the error. The time used is defined be the size of $T_I$ in the equation, can also be seen in equation \ref{eq:integral_control} \cite{digital_control}. 
+The error correcting time can depend on the size of the error, as a larger error will add or subtract more from the sum. The time used is defined be the size of $k_I$ in the equation, can also be seen in equation \ref{eq:integral_control} \cite{digital_control}. 
 
 \begin{equation}\label{eq:integral_control}
     \frac{U(s)}{E(s)}=\frac{k_I}{s} \to u(t)=k_I \int_{t_0}^t e(\tau) \ d\tau
 \end{equation}
-In this equation $k_I$ is th integral constant. It can be seen from the equation, that the size of $k_I$ has influence on the reaction time. If this value is small the reaction time will be fast, but if it is a big value it will have the opposite effection. If the time is set to small the control part can be slow, but if the time is set to big the control loop can begin to oscillate and become unstable. The upside of using a integral controller, is to add more gain for the transfer function. By doing this the steady-state behavior will be improved along side the adding of gain. 
+In this equation $k_I$ is the integral constant. It can be seen from the equation, that the size of $k_I$ has influence on the reaction time. If this value is small the reaction time will be fast, but if it is a big value it will have the opposite effection. If the time is set to small the control part can be slow, but if the time is set to big the control loop can begin to oscillate and become unstable. The upside of using a integral controller, is to add more gain for the transfer function. By doing this the steady-state behavior will be improved along side the adding of gain. 
 If the $k_I$ get to big it can also increase the overshoot for the control loop\cite{digital_control}. 
 
 
 \subsection*{Derivative controller}
-The derivative controller is mostly used in a motion controller. There are some problem related to this type of controller, it is very sensitive to measurement noise and it makes it difficult to make trial-and-error tuning.  It still make the response faster then by using a PI-controller only \cite{digital_control}. 
-
-The way the derivative controller works is by producing the output on the rate of changes of the errors. By doing this the derivative control, can be said to work on the errors, by correcting them by look on the past. This means the controller correct errors at a high rate, and if there are no errors the derivative controller will be zero. The equation for the derivation controller can be seen in equation \ref{eq:derivative_control} \cite{digital_control}.
+The way the derivative controller works is by finding the rate of change of the error. By doing this the derivative control, can be said to work on future errors, and correcting them by look at the past errors to get the rate they have changed. This means the controller corrects errors at a high rate, and if there are no errors the derivative controller will be zero. The equation for the derivation controller can be seen in equation \ref{eq:derivative_control} \cite{digital_control}.
 
 \begin{equation}\label{eq:derivative_control}
 \frac{U(s)}{E(s)}=k_D \cdot s
 \end{equation}
 
-In this equation the $k_D$ is the derivative time. The larger the derivative time is set to, the more higher the action form the controller will be, but if the time is set to high the controller will begin to oscillate and become unstable. And if the derivative time is to small the influence on the output will be slower \cite{digital_control}. By implementing a derivative controller, increase the phase. By increasing the phase, the phase margin also improves and thereby the damping of the transfer function.
+In this equation the $k_D$ is the derivative gain. The larger the derivative gain is, the higher the influence of the controller will be, but if the gain is set too high the controller will begin to oscillate and become unstable. And if the derivative gain is to small the influence on the output will be less \cite{digital_control}. By implementing a derivative controller, an increase in phase margin can be obtained. By increasing the phase margin a damping of the transfer function is achieved.
+
+A disadvantage of the derivative controller is that, as it works on rate of change, and higher rate of change gives a higher response, it amplifies high frequencies more. This happens to be where most natural noise is found, and as such, it amplifies noise in a system.
 
 \section{Differences between the PID-controllers parts}\label{s:different_pid}
 To compare the different combination between the PID-controller's parts, first a bode plot of all the components will be made to compare how they infect the bode plot. This bode plot can be seen figure \ref{fig:PID_bode}.
@@ -128,7 +129,11 @@ In figure \ref{fig:des_bodeplot} can the bode blot of $G(s)H(s)$ be seen, where 
 \end{figure}
 \newline
 To get the value of $K_p$ the magnitude have to be adjusted so the gain margin are 0 dB, this can be done by decreasing the calculated gain margin of 39.7 dB.
-The -39.7 dB have to be converted to a gain factor, which have been done by using the following equation \(10^\frac{dB}{10}\) and calculated the factor to 0.01. This mean $K_p$ is 0.01.
+The -39.7 dB have to be converted to a gain factor, which have been done by using the equation \ref{eq:db2kp} and calculated the factor to 0.01.
+\begin{equation}\label{eq:db2kp}
+    10^\frac{dB}{20}
+\end{equation}
+This mean $K_p$ is 0.01.
 With $K_p$ found the control diagram of the system get to be as seen in figure \ref{fig:dec_Final_block_diagram}.
 
 \begin{figure}[H]

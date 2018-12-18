@@ -1,11 +1,36 @@
 \chapter{Test of the final system}\label{ap:final_test_report}
 
-To make the final test of the drone, the control system has been program for the Teensy on the drone, and the  system has been tested in the motion tracking lab.
+The purpose of this test are to examined the final control system implemented on the quadcoptor and see if the system meats the requirements from chapter \ref{ch:Req} in the report. The test has been preformed in the Motion Tracking lab, located at AAU Fredrik Bajers Vej 7 room C2-111, as the Vicon system is located there. 
 
+
+\section*{Test setup}
+The components there are used in the test are as the following point:
+\begin{itemize}
+    \item{Vicon system}
+    \item{Reflectors}
+    \item{Drone}
+    \item{Teensy 3.2} % navnet på micro kontrolene
+    \item{Turnigy TGY-iA6} % navn på reciver
+    \item{Turnigy TGY-A6} % navn på transmitter
+\end{itemize}
+For the Vicon tracking system to track the drone, five reflectors is set on the drone. The placement of the reflectors can be seen in figure \ref{fig:reflectors_final_test}.
+The drone are placed in the room with the Vicon cameras. Where the Vicon system can record the drones movement, by tracking the reflectors. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/Appendix/measuringTest/Reflector1.pdf}
+    \caption{Illustration of placement of the reflectors on the drone.}
+    \label{fig:reflectors_final_test}
+\end{figure}
+
+To make the final test of the quadcoptor, the control system found in chapter \ref{ch:design_control_sys} has been programmed for the Teensy on the drone. The program for the Teensy can be fiound in the github repository \url{https://github.com/AAU-EIT5/drone-shim}.
+
+\section*{Execution}
 As discussed in section \ref{sec:control_code}, the drone has to be manually flown to the point where it hovers. Here the pilot flips a switch to set the gravity offset thrust, and set the initial set-point. If the operator flips the switch to the next position, 100 mm is added to the set point.
 
 This was the procedure used in the motion tracking lab, and the drone was tracked using the Vicon system to track its height over time. Additionally code was added that tracked the demanded throttle every 20ms, and once the aforementioned switch was returned to it's initial position, would save the last 20 seconds of these samples to EEPROM on the micro-controller. This would then be output on power-up over serial, when the drone was connected to a PC.
 
+\section*{Results}
 The resulting height data and throttle data can be seen on figure \ref{fig:first_test}
 
 \begin{figure}[H]
@@ -41,3 +66,8 @@ With this test, we still didn't see the expected result from the regulator, so w
 
 
 The regulator is limited in code to saturate early in order to avoid an improperly tuned regulator from crashing the drone, as full throttle is far too high for our drone, and especially for use inside. However the new Kp highlighted a problem with this limiting, as seen on figure \ref{fig:third_test}. The limiting was supposed to be 10\%, but as the code works in steps of 0.1\% it was mistakenly set to 1\% This was corrected, and the behaviour seen on figure \ref{fig:fourth_test} was observed. In this test we achieved closer to what we had expected, but we do see significant oscillations, and high overshoot.
+It can all be seen on figure \ref{fig:second_test}, \ref{fig:third_test} and \ref{fig:fourth_test} that error in the program have been made so the throttle could not get under the hover throttle. This problem could increase the overshoot so the system could not stabilize the Quadcoptors height.
+
+\section*{Conclusion}
+From the data collected in the test, it can be seen the original calculated Kp factor was to small to increase the the height of the drone. By increasing the Kp factor the system increases it height of the quadcoptor but also increases the overshoot and oscillation.
+From the test there was also found a error of the throttle limits in the program which contributes to the oscillation and high overshoot.

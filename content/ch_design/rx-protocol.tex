@@ -1,6 +1,6 @@
 \section{Communications}\label{s:coms}
 In order to control the drone, there has to be a way to transmit commands to the drone. This can be anything from simple commands like "arm motors" or complicated commands like streaming movement commands to the flight-controller on the drone.
-This section will go over a few different physical layers, and will then go in detail with.
+In the following sections will different physical layers examined. 
 
 \subsection*{Proprietary TX RX pair}\label{ss:rc-txrx}
 One very common solution for radio controlled devices to communicate, is over a proprietary RF link. These systems have a remote control as the transmitter (TX) that the operator use to control the drone, and the drone then has a receiver (RX) that outputs command to the drones flight-controller.
@@ -33,7 +33,7 @@ RX sensitivity        & -105 dBm                                                
 \end{table}
 
 The RF specification in table \ref{tab:RFSpec} system works within 2.405 to 2.475 GHz. There are 142 channels and each channel have 500 KHz bandwidth. For each transmitter there is unique ID, when the transmitter is connected to the receiver, the receiver will save the transmitters ID, and this way the receiver will avoid other transmitter signal.
-AFHDS2A, which stands for Automatic frequency hopping digital system 2A is used for radio frequency mode. This means AFHDS2A has the automatic identification function, which switches automatically in current mode between single-way communication mode and two-way communication mode. The AFHDS2A have multiple and error-correction built it. This improves the stability of the communication and reduces the error ratio and extend the reliable transmission distance. The drones transmitter and receiver can be found in datasheet.
+AFHDS2A, which stands for Automatic frequency hopping digital system 2A is used for radio frequency mode. This means AFHDS2A has the automatic identification function, which switches automatically in current mode between single-way communication mode and two-way communication mode. The AFHDS2A have multiple channel coding and error-correction built it. This improves the stability of the communication and reduces the error ratio and extend the reliable transmission distance. The drones transmitter and receiver specification can be found in datasheet \cite{ControllerUnit}.
 
 
 \subsection*{RX protocols}\label{ss:rxprotococls} The RX connects to the flight-controller, using one or more channels, where each channel carries a control signal for a function on the drone. These channels can either be transmitted over one wire each, using PWM to express the value of the channel. Or they can all be transmitted over one wire, using PPM or other serial protocols to express the value of each channel. In both cases, the channel value is encoded in the length of a pulse. With PWM, this is the length of the high-pulse, varying from 1000 $\mu$s, to 2000 $\mu$s. The reason for using 1000 as a lower limit, is that it allows the system to tell the difference between a signal at the minimum value (1000 $\mu$s) and a missing signal (no pulse) 
@@ -58,7 +58,7 @@ With PPM values are sent sequentially as seen in figure \ref{fig:chan_ppm}. Befo
 
 A common problem with PWM and PPM based transmission of channel values, is that these methods encode the channel values as time between pulses of one sort or another, this means they are susceptible to jitter in the clocks on both the transmitting and receiving system.\\
 In order to solve this, other serial protocols can be considered.
-One such serial protocol is used internally in the receiver used on the drone. The protocol is called flySky iBUS, and is a variation of the very common RS232 serial protocol. The data-rate is fixed at 115200 baud, with 8 data bits, and 1 stop bit, or 8N1.
+One such serial protocol is used internally in the receiver used on the drone. The protocol is called flySky iBUS, and is a variation of the very common RS232 serial protocol. The data-rate is fixed at 115200 baud, with 8 data bits, and 1 stop bit(8N1).
 
 \begin{figure}[h]
     \centering
